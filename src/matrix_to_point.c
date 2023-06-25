@@ -6,7 +6,7 @@
 /*   By: ebmarque <ebmarque@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 14:56:15 by ebmarque          #+#    #+#             */
-/*   Updated: 2023/06/24 16:02:43 by ebmarque         ###   ########.fr       */
+/*   Updated: 2023/06/25 13:46:47 by ebmarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	matrix_to_point(t_dot *fdf)
 		while (i < fdf->nb_columns)
 		{
 			create_point(fdf, j, i, fdf->matrix[j][i]);
-			screen_size((fdf->point)[j][i], fdf);
+			screen_dimensions(fdf->point)[j][i], fdf);
 			i++;
 		}
 	}

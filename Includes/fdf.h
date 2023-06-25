@@ -6,7 +6,7 @@
 /*   By: ebmarque <ebmarque@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/03 15:13:39 by vinograd          #+#    #+#             */
-/*   Updated: 2023/06/24 16:07:48 by ebmarque         ###   ########.fr       */
+/*   Updated: 2023/06/25 14:08:55 by ebmarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,11 +122,19 @@ void			set_param(t_dot *fdf);
 //MATRIX TO POINT;
 
 void			matrix_to_point(t_dot *fdf);
-void			screen_dimensions(t_coordinate a, t_dot *fdf);
 void			create_point(t_dot *fdf, int j, int i, int value);
 
 // PROJECTIONS
 
 t_coordinate	ismotric_projection(t_coordinate a, t_dot *fdf);
+
+// SCREEN
+
+void			screen_dimensions(t_coordinate a, t_dot *fdf);
+void			screen_size(t_dot *fdf);
+
+// HANDLE_KEYPRESS
+
+
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ebmarque <ebmarque@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 12:38:27 by ebmarque          #+#    #+#             */
-/*   Updated: 2023/06/24 14:56:01 by ebmarque         ###   ########.fr       */
+/*   Updated: 2023/06/25 14:00:48 by ebmarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,21 @@ void	panic(t_dot *fdf)
 void	init_game(t_dot *fdf)
 {
 	set_param(fdf);
-	matrix_to_pint(fdf);
+	matrix_to_point(fdf);
+	screen_size(fdf);
+	if (fdf->win)
+		mlx_destroy_window(fdf->conect, fdf->win);
+	if (fdf->img.img)
+		mlx_destroy_image(fdf->conect, fdf->img.img);
+	fdf->img.img = mlx_new_image(fdf->conect, fdf->screen.max_x, fdf->screen.max_y);
+	fdf->img.addr = mlx_get_data_addr(fdf->img.img,
+			&fdf->img.bits_per_pixel, &fdf->img.line_length, &fdf->img.endian);
+	fdf->win = mlx_new_window(fdf->conect, fdf->win,
+			fdf->screen.max_x, fdf->screen.max_y, "FDF - EBMARQUE");
+	mlx_hook(fdf->win, 2, 1L << 0, handle_keypress, fdf);
+	mlx_hook(fdf->win, 17, 0, ft_close, fdf);
+	mlx_hook(fdf->win, 4, 1L << 2, mouse_hook, fdf);
+	draw_img_grid(fdf);
 }
 
 int	main(int argc, char *argv[])
