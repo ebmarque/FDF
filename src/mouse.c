@@ -6,7 +6,7 @@
 /*   By: ebmarque <ebmarque@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/25 14:02:57 by ebmarque          #+#    #+#             */
-/*   Updated: 2023/06/25 14:03:51 by ebmarque         ###   ########.fr       */
+/*   Updated: 2023/07/04 13:16:11 by ebmarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@
 void	free_mlx(t_dot *fdf)
 {
 	if (fdf->win)
-		mlx_destroy_window(fdf->mlx, fdf->win);
+		mlx_destroy_window(fdf->conect, fdf->win);
 	if (fdf->img.img)
-		mlx_destroy_image(fdf->mlx, fdf->img.img);
-	mlx_destroy_display(fdf->mlx);
-	free(fdf->mlx);
+		mlx_destroy_image(fdf->conect, fdf->img.img);
+	mlx_destroy_display(fdf->conect);
+	free(fdf->conect);
 }
 
 /* Termina a janela */
@@ -54,12 +54,12 @@ int	mouse_hook(int button, int x, int y, t_dot *fdf)
 	clean_img(fdf);
 	if (button == 4)
 	{
-		fdf->size_grid += 0.5;
+		fdf->grid_size += 0.5;
 	}
 	else if (button == 5)
 	{
-		if (fdf->size_grid > 0.5)
-			fdf->size_grid -= 0.5;
+		if (fdf->grid_size > 0.5)
+			fdf->grid_size -= 0.5;
 	}
 	else if (button == 1)
 	{
@@ -68,4 +68,20 @@ int	mouse_hook(int button, int x, int y, t_dot *fdf)
 	}
 	draw_img_grid(fdf);
 	return (0);
+}
+
+void	free_map(t_dot *fdf)
+{
+	int	i;
+
+	i = -1;
+	while (fdf->matrix && fdf->matrix[++i])
+	{
+		free(fdf->matrix[i]);
+		free(fdf->point[i]);
+	}
+	free(fdf->matrix);
+	free(fdf->point);
+	fdf->matrix = NULL;
+	fdf->point = NULL;
 }

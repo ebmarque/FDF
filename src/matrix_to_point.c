@@ -6,7 +6,7 @@
 /*   By: ebmarque <ebmarque@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 14:56:15 by ebmarque          #+#    #+#             */
-/*   Updated: 2023/06/25 13:46:47 by ebmarque         ###   ########.fr       */
+/*   Updated: 2023/07/09 18:30:10 by ebmarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,6 @@ void	create_point(t_dot *fdf, int j, int i, int value)
 	fdf->point[j][i].x = i;
 	fdf->point[j][i].y = j;
 	fdf->point[j][i].z = value;
-	if (i == fdf->nb_columns - 1)
-		fdf->point[j][i].is_last = true;
-	else
-		fdf->point[j][i].is_last = false;
 }
 
 void	screen_dimensions(t_coordinate a, t_dot *fdf)
@@ -32,7 +28,7 @@ void	screen_dimensions(t_coordinate a, t_dot *fdf)
 		fdf->z_modify = 9;
 	if (fdf->max_z - fdf->min_z > 900)
 		fdf->z_modify = 90;
-	a = ismotric_projection(a, fdf);
+	a = isometric_projection(a, fdf);
 	x = a.x;
 	y = a.y;
 	if (x < fdf->screen.min_x && x < 0)
@@ -47,21 +43,22 @@ void	screen_dimensions(t_coordinate a, t_dot *fdf)
 
 void	matrix_to_point(t_dot *fdf)
 {
-	int	i;
-	int	j;
+	int	x;
+	int	y;
 
-	j = -1;
 	fdf->point = malloc(sizeof(t_coordinate *) * fdf->nb_lines);
-	while (++j < fdf->nb_lines)
+	y = 0;
+	while (y < fdf->nb_lines)
 	{
-		i = 0;
-		fdf->point[j] = malloc(sizeof(t_coordinate) * fdf->nb_columns);
-		while (i < fdf->nb_columns)
+		x = 0;
+		fdf->point[y] = malloc(sizeof(t_coordinate) * fdf->nb_columns);
+		while (x < fdf->nb_columns)
 		{
-			create_point(fdf, j, i, fdf->matrix[j][i]);
-			screen_dimensions(fdf->point)[j][i], fdf);
-			i++;
+			create_point(fdf, y, x, fdf->matrix[y][x]);
+			screen_dimensions((fdf->point)[y][x], fdf);
+			x++;
 		}
+		y++;
 	}
-	
+	printf("ok!");
 }

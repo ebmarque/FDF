@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_keypress.c                                  :+:      :+:    :+:   */
+/*   handle_keypress1.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebmarque <ebmarque@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/25 14:01:03 by ebmarque          #+#    #+#             */
-/*   Updated: 2023/06/25 14:04:40 by ebmarque         ###   ########.fr       */
+/*   Updated: 2023/07/04 13:22:39 by ebmarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	handle_parte_one(int keysym, t_dot *fdf)
 {
-	else if (keysym == XK_Escape)
+	if (keysym == XK_Escape)
 		ft_close(fdf);
 	else if (keysym == 65363 || keysym == 65361 \
 	|| keysym == 65364 || keysym == 65362)
@@ -34,7 +34,7 @@ int	handle_keypress(int keysym, t_dot *fdf)
 	|| keysym == 65507 || keysym == 65505 || keysym == 65289)
 		handle_z(keysym, fdf);
 	else if (keysym == 'g')
-		fdf->size_grid = 1;
+		fdf->grid_size = 1;
 	else if (keysym == 121 || keysym == 117 || keysym == '3')
 		handle_projection(keysym, fdf);
 	else if (keysym == 'i' || keysym == 'k' || keysym == 'j' \

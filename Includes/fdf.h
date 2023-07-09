@@ -6,7 +6,7 @@
 /*   By: ebmarque <ebmarque@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/03 15:13:39 by vinograd          #+#    #+#             */
-/*   Updated: 2023/06/25 14:08:55 by ebmarque         ###   ########.fr       */
+/*   Updated: 2023/07/09 17:22:07 by ebmarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@
 # include <stdbool.h>
 # include <string.h>
 # include <math.h>
+# include "../mlx_linux/mlx.h"
+# include "X11/X.h"
+# include "X11/keysym.h"
 
 # define BUFFER_SIZE 10
 # include "../libft/libft.h"
@@ -36,8 +39,8 @@
 # define MAGENTA_COLOR "\033[0;35m"
 # define CYAN_COLOR "\033[0;36m"
 # define WHITE_COLOR "\033[0;37m"
-# define WIN_WIDTH 1500
-# define WIN_HEIGHT 900
+# define WIN_WIDTH 1920
+# define WIN_HEIGHT 1200
 
 typedef struct s_data{
 	void	*img;
@@ -52,7 +55,6 @@ typedef struct s_coordinate
 	float		x;
 	float		y;
 	float		z;
-	int			is_last;
 }				t_coordinate;
 
 typedef struct s_screen {
@@ -69,8 +71,6 @@ typedef struct s_fdf
 	int				**matrix;
 	int				nb_columns;
 	int				nb_lines;
-	int				win_x;
-	int				win_y;
 	float			rgb_p;
 	float			range_z;
 	float			grid_size;
@@ -82,6 +82,7 @@ typedef struct s_fdf
 	float			phi;
 	float			qsi;
 	float			z_modify;
+	float			slope;
 	int				max_z;
 	int				min_z;
 	int				new_max;
@@ -91,6 +92,9 @@ typedef struct s_fdf
 	int				shift_x;	
 	int				shift_y;
 	int				is_isometric;
+	int				direction;
+	int				tranform_number;
+	int				flag;
 	t_coordinate	**point;
 	t_screen		screen;
 	t_data			img;
@@ -116,7 +120,6 @@ void			fill_matrix_line(t_dot *fdf, char **split, int index);
 void			fill_matrix(t_dot *fdf, char *file, int fd);
 
 //SET PARAMETERS
-void			set_connection(t_dot *fdf);
 void			set_param(t_dot *fdf);
 
 //MATRIX TO POINT;
@@ -126,14 +129,70 @@ void			create_point(t_dot *fdf, int j, int i, int value);
 
 // PROJECTIONS
 
-t_coordinate	ismotric_projection(t_coordinate a, t_dot *fdf);
+t_coordinate	isometric_projection(t_coordinate a, t_dot *fdf);
+t_coordinate	parallel_projection(t_coordinate a, t_dot *fdf);
+t_coordinate	front_view(t_coordinate a, t_dot *fdf);
+t_coordinate	right_view(t_coordinate a, t_dot *fdf);
+t_coordinate	top_view(t_coordinate a, t_dot *fdf);
 
 // SCREEN
 
 void			screen_dimensions(t_coordinate a, t_dot *fdf);
 void			screen_size(t_dot *fdf);
+void			bigger_case(t_dot *fdf);
+void			smaller_case(t_dot *fdf);
 
-// HANDLE_KEYPRESS
+// HANDLE_KEYPRESS 
+
+void			handle_parte_one(int keysym, t_dot *fdf);
+int				handle_keypress(int keysym, t_dot *fdf);
+void			handle_offset(int keysym, t_dot *fdf);
+void			handle_shift(int keysym, t_dot *fdf);
+void			handle_angles(int keysym, t_dot *fdf);
+void			handle_color(int keysym, t_dot *fdf);
+void			handle_rotation(int keysym, t_dot *fdf);
+void			handle_projection(int keysym, t_dot *fdf);
+void			handle_z(int keysym, t_dot *fdf);
+
+// MOUSE
+
+void			free_mlx(t_dot *fdf);
+int				ft_close(void *o);
+void			clean_img(t_dot *fdf);
+int				mouse_hook(int button, int x, int y, t_dot *fdf);
+void			free_map(t_dot *fdf);
+
+// DRAW GRID
+
+t_coordinate	transformations(t_dot *fdf, t_coordinate a);
+void			edge_case(t_dot *fdf, t_coordinate a, t_coordinate b, float range, float x);
+void			inicializer(t_dot *fdf, t_coordinate a, t_coordinate b, float x);
+void			two_points(t_dot *fdf, t_coordinate a, t_coordinate b);
+void			draw_img_grid(t_dot *fdf);
+
+// ROTATIONS
+
+t_coordinate	init_coordinate(int x, int y, int z);
+t_coordinate	rotation_x(t_coordinate a, t_dot *fdf);
+t_coordinate	rotation_y(t_coordinate a, t_dot *fdf);
+t_coordinate	rotation_z(t_coordinate a, t_dot *fdf);
+
+// MAP AUX
+
+void			ft_max_and_min(int nb, t_dot *fdf);
+
+// COLOR
+
+void			my_mlx_pixel_put(t_dot *fdf, int x, int y, int color);
+int				create_trgb(int t, int r, int g, int b);
+int				make_color(float percent, int flag, int r, int g);
+int				percent_to_color(float percent, int flag);
+
+// MENU
+
+void			projection_type(t_dot *fdf);
+void			ft_part_one(t_dot *fdf);
+void			ft_menu(t_dot *fdf);
 
 
 

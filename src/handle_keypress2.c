@@ -6,7 +6,7 @@
 /*   By: ebmarque <ebmarque@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/25 14:05:30 by ebmarque          #+#    #+#             */
-/*   Updated: 2023/06/25 14:06:31 by ebmarque         ###   ########.fr       */
+/*   Updated: 2023/07/04 13:01:35 by ebmarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,18 @@
 //a projecao, quer seja variando shifts, angulos ou cores
 
 void	handle_shift(int keysym, t_dot *fdf)
+{
+	if (keysym == 65363)
+		fdf->shift_x += 50;
+	else if (keysym == 65361)
+		fdf->shift_x -= 50;
+	else if (keysym == 65364)
+		fdf->shift_y += 50;
+	else if (keysym == 65362)
+		fdf->shift_y -= 50;
+}
+
+void	handle_offset(int keysym, t_dot *fdf)
 {
 	if (keysym == 65363)
 		fdf->shift_x += 50;
@@ -49,10 +61,6 @@ void	handle_color(int keysym, t_dot *fdf)
 		fdf->flag++;
 	else if (keysym == 50 && fdf->flag > 0)
 		fdf->flag--;
-	else if (keysym == '0')
-		fdf->map_option = 0;
-	else if (keysym == '9')
-		fdf->map_option = 1;
 }
 
 //x->theta; y->phi; z->qsi;

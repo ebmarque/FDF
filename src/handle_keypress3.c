@@ -6,7 +6,7 @@
 /*   By: ebmarque <ebmarque@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/25 14:07:20 by ebmarque          #+#    #+#             */
-/*   Updated: 2023/06/25 14:08:27 by ebmarque         ###   ########.fr       */
+/*   Updated: 2023/07/04 13:03:30 by ebmarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,6 @@ void	handle_projection(int keysym, t_dot *fdf)
 		fdf->tranform_number++;
 	else if (keysym == 117 && fdf->tranform_number > 1)
 		fdf->tranform_number--;
-	else if (keysym == '3')
-	{
-		fdf->map_option = fdf->map_option == 0;
-		change_map(fdf, 0);
-	}
 }
 
 void	handle_z(int keysym, t_dot *fdf)
