@@ -6,7 +6,7 @@
 /*   By: ebmarque <ebmarque@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/25 14:02:57 by ebmarque          #+#    #+#             */
-/*   Updated: 2023/07/04 13:16:11 by ebmarque         ###   ########.fr       */
+/*   Updated: 2023/07/25 12:59:46 by ebmarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	ft_close(void *o)
 {
 	free_map((t_dot *) o);
 	free_mlx((t_dot *) o);
+	free((t_dot *) o);
 	exit(0);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: ebmarque <ebmarque@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 12:13:52 by ebmarque          #+#    #+#             */
-/*   Updated: 2023/07/09 13:06:23 by ebmarque         ###   ########.fr       */
+/*   Updated: 2023/07/27 11:59:42 by ebmarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_coordinate	transformations(t_dot *fdf, t_coordinate a)
 	return (a);
 }
 
-void	edge_case(t_dot *fdf, t_coordinate a, t_coordinate b, float range, float x)
+void	edge_case(t_dot *fdf, t_coordinate a, t_coordinate b, float x)
 {
 	int	y;
 	int	flag;
@@ -40,7 +40,7 @@ void	edge_case(t_dot *fdf, t_coordinate a, t_coordinate b, float range, float x)
 	y = a.y;
 	while (fabs(b.y - y) > 0.5)
 	{
-		fdf->rgb_p = fdf->rgb_p + range / ((fdf->grid_size));
+		fdf->rgb_p = fdf->rgb_p + fdf->range_z / ((fdf->grid_size));
 		my_mlx_pixel_put(fdf, x, y, percent_to_color(fdf->rgb_p, \
 			fdf->flag));
 		y += ((b.y - a.y) / (fabs(b.y - a.y)));
@@ -57,7 +57,7 @@ void	inicializer(t_dot *fdf, t_coordinate a, t_coordinate b, float x)
 	else
 		fdf->range_z = -(a.z / fdf->new_max - b.z / fdf->new_max);
 	if (fabs(b.x - a.x) <= 0.5 && fabs(b.y - a.y) > 0.5)
-		edge_case(fdf, a, b, fdf->range_z, x);
+		edge_case(fdf, a, b, x);
 	fdf->slope = (b.y - a.y) / (b.x - a.x);
 	fdf->direction = (b.x - a.x) / (fabs(b.x - a.x));
 }

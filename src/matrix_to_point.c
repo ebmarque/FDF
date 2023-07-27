@@ -6,7 +6,7 @@
 /*   By: ebmarque <ebmarque@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 14:56:15 by ebmarque          #+#    #+#             */
-/*   Updated: 2023/07/09 18:30:10 by ebmarque         ###   ########.fr       */
+/*   Updated: 2023/07/24 10:29:10 by ebmarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,4 @@ void	matrix_to_point(t_dot *fdf)
 		}
 		y++;
 	}
-	printf("ok!");
 }

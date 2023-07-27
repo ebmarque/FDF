@@ -6,7 +6,7 @@
 /*   By: ebmarque <ebmarque@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 12:38:27 by ebmarque          #+#    #+#             */
-/*   Updated: 2023/07/09 18:43:32 by ebmarque         ###   ########.fr       */
+/*   Updated: 2023/07/27 11:42:17 by ebmarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,31 @@ void	free_matrix(t_dot *fdf)
 	free(fdf->matrix);
 }
 
+void	free_point(t_dot *fdf)
+{
+	int	i;
+
+	i = 0;
+	while (fdf->point[i])
+	{
+		free(fdf->point[i]);
+		i++;
+	}
+	free(fdf->point[i]);
+	free(fdf->point);
+}
+
 void	panic(t_dot *fdf)
 {
 	free(fdf->conect);
 	free(fdf->win);
 	free_matrix(fdf);
+	free_point(fdf);
+	free(fdf);
 }
 
 void	init_game(t_dot *fdf, char *file)
 {
-	set_param(fdf);
 	get_martix(fdf, file);
 	matrix_to_point(fdf);
 	screen_size(fdf);
@@ -60,10 +75,12 @@ int	main(int argc, char *argv[])
 	t_dot	*fdf;
 
 	fdf = malloc(sizeof(t_dot));
-	fdf->conect = mlx_init();
+	if (!fdf)
+		return (1);
+	set_param(fdf);
 	check_map(argc, argv[1], fdf);
+	fdf->conect = mlx_init();
 	init_game(fdf, argv[1]);
 	mlx_loop(fdf->conect);
-	panic(fdf);
 	return (0);
 }

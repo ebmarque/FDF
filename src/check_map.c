@@ -6,7 +6,7 @@
 /*   By: ebmarque <ebmarque@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 12:55:22 by ebmarque          #+#    #+#             */
-/*   Updated: 2023/06/24 15:02:32 by ebmarque         ###   ########.fr       */
+/*   Updated: 2023/07/26 10:03:00 by ebmarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	file_type(char *file, t_dot *fdf)
 	{
 		ft_putstr_fd((RED_COLOR "FILE IS NOT A \"FDF\" TYPE \n" RESET_COLOR), 2);
 		free(fdf);
-		exit(EXIT_FAILURE);
+		exit(EXIT_SUCCESS);
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: ebmarque <ebmarque@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/03 15:13:39 by vinograd          #+#    #+#             */
-/*   Updated: 2023/07/09 17:22:07 by ebmarque         ###   ########.fr       */
+/*   Updated: 2023/07/27 11:59:27 by ebmarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,7 @@ int				get_nb_columns(char *file);
 int	 			check_columns(char **line, int comlumn_ref);
 int				check_line(char *line);
 void			panic(t_dot *fdf);
+void			free_point(t_dot *fdf);
 
 // LOADING MAP
 
@@ -126,6 +127,7 @@ void			set_param(t_dot *fdf);
 
 void			matrix_to_point(t_dot *fdf);
 void			create_point(t_dot *fdf, int j, int i, int value);
+void			set_img(t_dot  *fdf);
 
 // PROJECTIONS
 
@@ -165,7 +167,7 @@ void			free_map(t_dot *fdf);
 // DRAW GRID
 
 t_coordinate	transformations(t_dot *fdf, t_coordinate a);
-void			edge_case(t_dot *fdf, t_coordinate a, t_coordinate b, float range, float x);
+void			edge_case(t_dot *fdf, t_coordinate a, t_coordinate b, float x);
 void			inicializer(t_dot *fdf, t_coordinate a, t_coordinate b, float x);
 void			two_points(t_dot *fdf, t_coordinate a, t_coordinate b);
 void			draw_img_grid(t_dot *fdf);

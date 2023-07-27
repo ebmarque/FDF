@@ -6,14 +6,25 @@
 /*   By: ebmarque <ebmarque@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 14:54:34 by ebmarque          #+#    #+#             */
-/*   Updated: 2023/07/09 13:15:00 by ebmarque         ###   ########.fr       */
+/*   Updated: 2023/07/27 11:51:14 by ebmarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Includes/fdf.h"
 
+void	set_img(t_dot *fdf)
+{
+	fdf->img.img = NULL;
+	fdf->img.addr = NULL;
+	fdf->img.bits_per_pixel = 0;
+	fdf->img.line_length = 0;
+	fdf->img.endian = 0;
+}
+
 void	set_param(t_dot *fdf)
 {
+	fdf->nb_columns = 0;
+	fdf->nb_lines = 0;
 	fdf->grid_size = 10;
 	fdf->shift_x = 0;
 	fdf->shift_y = 0;
@@ -34,4 +45,6 @@ void	set_param(t_dot *fdf)
 	fdf->flag = 4;
 	fdf->point = NULL;
 	fdf->matrix = NULL;
+	fdf->win = NULL;
+	set_img(fdf);
 }
