@@ -6,7 +6,7 @@
 /*   By: ebmarque <ebmarque@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/25 14:02:57 by ebmarque          #+#    #+#             */
-/*   Updated: 2023/07/25 12:59:46 by ebmarque         ###   ########.fr       */
+/*   Updated: 2023/07/31 14:06:33 by ebmarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,12 +55,12 @@ int	mouse_hook(int button, int x, int y, t_dot *fdf)
 	clean_img(fdf);
 	if (button == 4)
 	{
-		fdf->grid_size += 0.5;
+		fdf->grid_size += 0.3;
 	}
 	else if (button == 5)
 	{
 		if (fdf->grid_size > 0.5)
-			fdf->grid_size -= 0.5;
+			fdf->grid_size -= 0.3;
 	}
 	else if (button == 1)
 	{

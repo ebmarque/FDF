@@ -6,7 +6,7 @@
 /*   By: ebmarque <ebmarque@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 14:54:34 by ebmarque          #+#    #+#             */
-/*   Updated: 2023/07/27 11:51:14 by ebmarque         ###   ########.fr       */
+/*   Updated: 2023/07/27 15:18:14 by ebmarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,6 @@ void	set_param(t_dot *fdf)
 	fdf->point = NULL;
 	fdf->matrix = NULL;
 	fdf->win = NULL;
+	fdf->file = NULL;
 	set_img(fdf);
 }

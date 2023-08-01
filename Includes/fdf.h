@@ -6,7 +6,7 @@
 /*   By: ebmarque <ebmarque@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/03 15:13:39 by vinograd          #+#    #+#             */
-/*   Updated: 2023/07/27 11:59:27 by ebmarque         ###   ########.fr       */
+/*   Updated: 2023/07/31 21:24:17 by ebmarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@
 # define MAGENTA_COLOR "\033[0;35m"
 # define CYAN_COLOR "\033[0;36m"
 # define WHITE_COLOR "\033[0;37m"
-# define WIN_WIDTH 1920
-# define WIN_HEIGHT 1200
+# define WIN_WIDTH 1200
+# define WIN_HEIGHT 700
 
 typedef struct s_data{
 	void	*img;
@@ -69,6 +69,7 @@ typedef struct s_fdf
 	void			*conect;
 	void			*win;
 	int				**matrix;
+	char			*file;
 	int				nb_columns;
 	int				nb_lines;
 	float			rgb_p;
@@ -89,7 +90,7 @@ typedef struct s_fdf
 	int				z_scale;
 	int				color;
 	int				scale;
-	int				shift_x;	
+	int				shift_x;
 	int				shift_y;
 	int				is_isometric;
 	int				direction;
@@ -100,7 +101,6 @@ typedef struct s_fdf
 	t_data			img;
 }					t_dot;
 
-
 //ERROR AND CHECK
 
 void			check_map(int argc, char *file, t_dot *fdf);
@@ -109,7 +109,7 @@ void			check_empty(char *file, t_dot *fdf);
 void			invalid_chars(char *file, t_dot *fdf);
 int				map_shape(char *file, t_dot *fdf);
 int				get_nb_columns(char *file);
-int	 			check_columns(char **line, int comlumn_ref);
+int				check_columns(char **line, int comlumn_ref);
 int				check_line(char *line);
 void			panic(t_dot *fdf);
 void			free_point(t_dot *fdf);
@@ -127,7 +127,7 @@ void			set_param(t_dot *fdf);
 
 void			matrix_to_point(t_dot *fdf);
 void			create_point(t_dot *fdf, int j, int i, int value);
-void			set_img(t_dot  *fdf);
+void			set_img(t_dot *fdf);
 
 // PROJECTIONS
 
@@ -168,7 +168,8 @@ void			free_map(t_dot *fdf);
 
 t_coordinate	transformations(t_dot *fdf, t_coordinate a);
 void			edge_case(t_dot *fdf, t_coordinate a, t_coordinate b, float x);
-void			inicializer(t_dot *fdf, t_coordinate a, t_coordinate b, float x);
+void			inicializer(t_dot *fdf, t_coordinate a,
+					t_coordinate b, float x);
 void			two_points(t_dot *fdf, t_coordinate a, t_coordinate b);
 void			draw_img_grid(t_dot *fdf);
 
@@ -195,7 +196,5 @@ int				percent_to_color(float percent, int flag);
 void			projection_type(t_dot *fdf);
 void			ft_part_one(t_dot *fdf);
 void			ft_menu(t_dot *fdf);
-
-
 
 #endif

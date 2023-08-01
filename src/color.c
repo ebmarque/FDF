@@ -6,7 +6,7 @@
 /*   By: ebmarque <ebmarque@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 12:37:45 by ebmarque          #+#    #+#             */
-/*   Updated: 2023/07/04 12:38:36 by ebmarque         ###   ########.fr       */
+/*   Updated: 2023/07/31 14:27:14 by ebmarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,14 +54,15 @@ int	make_color(float percent, int flag, int r, int g)
 	return (0);
 }
 
-//0    -> (0,     0,     0)
-//0.25 -> (255,   127.5, 0)
-//0.49 -> (255,   255,   0)
-//0.5  -> (255,   255,   0)
-//0.75 -> (127,5, 255,   0)
-//1    -> (0,     255,   0)
-//Mais perto de 0.5, mais perto de (255, 255, 0)
-//Mais perto de 1, mais perto de (0,255, 0)
+/* 
+0    -> (0,     0,     0)
+0.25 -> (255,   127.5, 0)
+0.49 -> (255,   255,   0)
+0.5  -> (255,   255,   0)
+0.75 -> (127,5, 255,   0)
+1    -> (0,     255,   0)
+Mais perto de 0.5, mais perto de (255, 255, 0)
+Mais perto de 1, mais perto de (0,255, 0) */
 int	percent_to_color(float percent, int flag)
 {
 	int	r;

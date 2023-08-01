@@ -6,7 +6,7 @@
 /*   By: ebmarque <ebmarque@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 12:57:05 by ebmarque          #+#    #+#             */
-/*   Updated: 2023/07/04 13:09:23 by ebmarque         ###   ########.fr       */
+/*   Updated: 2023/07/31 13:24:04 by ebmarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,16 +77,6 @@ void	ft_menu(t_dot *fdf)
 		425, 0xAFA9A9, "mouse click - grid location");
 	mlx_string_put(fdf->conect, fdf->win, 100, \
 		450, 0xAFA9A9, "y and u - change projection");
-	mlx_string_put(fdf->conect, fdf->win, 100, 475, 0xAFA9A9, \
-	"9 and 0 - menu change");
-	mlx_string_put(fdf->conect, fdf->win, 100, \
-		500, 0xAFA9A9, "3 and 4 - change mode");
-	mlx_string_put(fdf->conect, fdf->win, 100, 525, 0xAFA9A9, \
-	"m - change map");
-	mlx_string_put(fdf->conect, fdf->win, 100, \
-		550, 0xAFA9A9, "r - reset map");
-	mlx_string_put(fdf->conect, fdf->win, WIN_WIDTH - 125, \
-		20, 0xAFA9A9, "MAP NAME");
 	mlx_string_put(fdf->conect, fdf->win, 100, \
 		WIN_HEIGHT - 25, 0xAFA9A9, "By: Ebenezer Marquezine");
 }

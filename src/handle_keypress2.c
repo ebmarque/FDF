@@ -6,7 +6,7 @@
 /*   By: ebmarque <ebmarque@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/25 14:05:30 by ebmarque          #+#    #+#             */
-/*   Updated: 2023/07/04 13:01:35 by ebmarque         ###   ########.fr       */
+/*   Updated: 2023/07/31 13:25:42 by ebmarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ void	handle_offset(int keysym, t_dot *fdf)
 
 void	handle_angles(int keysym, t_dot *fdf)
 {
-	if (keysym == 'w')
+	if (keysym == 's')
 		fdf->angle_y += 0.03;
-	else if (keysym == 's')
+	else if (keysym == 'w')
 		fdf->angle_y -= 0.03;
 	else if (keysym == '7')
 		fdf->angle_x += 0.03;
